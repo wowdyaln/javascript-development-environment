@@ -14,5 +14,6 @@ app.listen(port, (err)=>{
     console.log(err)
   } else {
     open('http://localhost:' + port)
+    console.log("express server start.")
   }
 })
