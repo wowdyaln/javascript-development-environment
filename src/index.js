@@ -8,8 +8,8 @@ getUsers().then(result => {
     usersBody += `<tr>
       <td><a herf="#" data-id="${user.id}" class="deleteUser">Delete</a></td>
       <td>${user.id}</td>
-      <td>${user.first}</td>
-      <td>${user.last}</td>
+      <td>${user.firstName}</td>
+      <td>${user.lastName}</td>
       <td>${user.email}</td>
       </tr>`
   })

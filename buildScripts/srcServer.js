@@ -20,9 +20,9 @@ app.get('/', (req, res) => {
 app.get('/users', (req, res)=> {
   // hard coding to simplicity. pretend this hits a real database
   res.json([
-    {"id": 1, "first":"A", "last":"aoao", "email": "a@gmail.com"},
-    {"id": 2, "first":"B", "last":"bobo", "email": "c@gmail.com"},
-    { "id": 3, "first": "C", "last": "coco", "email":"b@gmail.com"},
+    {"id": 1, "firstName":"A", "lastName":"aoao", "email": "a@gmail.com"},
+    {"id": 2, "firstName":"B", "lastName":"bobo", "email": "c@gmail.com"},
+    { "id": 3, "firstName": "C", "lastName": "coco", "email":"b@gmail.com"},
   ])
 })
 
