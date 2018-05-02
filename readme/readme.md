@@ -163,3 +163,15 @@ Appveyor因其Windows支持而值得注意。
 
 ---
 
+ - HTTP call approaches
+
+如果你只在Node上工作，使用 Request 
+如果您在瀏覽器中，那麼使用 polyfill 進行抓取是最有前途的方法.但是，這也假定您可以忍受Fetch的限制。
+
+最後，如果您正在構建需要在客戶端和服務器上呈現的應用程序，那麼
+isomorphic-fetch
+xhr
+SuperAgent
+Axios
+都是不錯的選擇。取決於您是否優先考慮文件大小或功能，SuperAgent和Axios 提供更多功能。
+
