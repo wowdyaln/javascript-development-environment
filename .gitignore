@@ -1,5 +1,6 @@
 .vscode/
 src/api/db.json
+dist/
 # Logs
 logs
 *.log

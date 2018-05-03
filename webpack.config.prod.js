@@ -19,8 +19,8 @@ export default {
       noInfo: false,
     }),
 
-    // Minify JS
-    new webpack.optimize.UglifyJsPlugin()
+    // Minify JS; not avalible in webpack 4.
+    // new webpack.optimize.UglifyJsPlugin()
   ],
   module: {
     rules: [
