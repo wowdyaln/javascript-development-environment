@@ -4,21 +4,34 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 export default {
   devtool: 'source-map', //https://webpack.js.org/configuration/devtool/#devtool
-  entry: [
-    path.resolve(__dirname, 'src/index')
-  ],
+  entry: {
+    main: path.resolve(__dirname, 'src/index'),
+    vendor: path.resolve(__dirname, 'src/vendor')
+  },
   target: 'web',
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: '[name].js'
   },
+
   mode: 'development',
+
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: { test: /[\\/]node_modules[\\/]/, name: "vendors", chunks: "all" }
+      }
+    }
+  },
+
   plugins: [
     new webpack.LoaderOptionsPlugin({
       debug: true,
       noInfo: false,
     }),
+
+    // webpack.optimize.CommonsChunkPlugin has been removed, please use config.optimization.splitChunks instead.
 
     // create HTML file includes reference to bundled JS.
     new HtmlWebpackPlugin({
