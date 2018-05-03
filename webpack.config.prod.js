@@ -2,6 +2,7 @@ import webpack from 'webpack';
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import WebpackMD5Hash from 'webpack-md5-hash'
+// extract-text-webpack-plugin 在 webpack4 一堆坑，先跳過
 
 export default {
   devtool: 'source-map', //https://webpack.js.org/configuration/devtool/#devtool
