@@ -12,7 +12,7 @@ localtunnel 非常實用。如果您有一堆設備要與本地託管的工作�
 `npm run share`
 
 ---
-- 41 why bundle?
+### 41 why bundle?
 
 NPM 使用 commonJS模式； node 可以處理這個，但瀏覽器不理解它。
  因此，您需要將NPM軟件包 bundle 到瀏覽器可以使用的格式中。
@@ -48,7 +48,7 @@ node.js 可以繼續使用CommonJS。
 
 ---
 
-- 63  why Lint via an automated build
+### 63  why Lint via an automated build
 
 您可能會想知道為什麼我們應該通過自動構建過程來 lint，因為許多編輯器都提供了ESLint集成內置的功能，所以他們只是監視您的代碼並在那裡輸出結果在編輯器內。我更願意將ESLint與我的構建過程集成在一起：首先，將我的代碼的所有反饋輸出到命令行，為我提供了一個地方來檢查與我的代碼質量相關的所有反饋。
 
@@ -58,7 +58,7 @@ node.js 可以繼續使用CommonJS。
  如果每個人都有相同的開發流程，配對編程也更容易，而且最重要的是，ESLint應該是您的構建過程的一部分，以便在有人commit任何引發linting錯誤的代碼時，構建在持續集成服務器上被破壞。 這有助於防止您的應用程序慢慢變得不穩定。 即使開發人員在本地忽略ESLint，您的持續集成服務器也會自動拒絕構建。
 
 ---
-- 70 Assertion library
+### 70 Assertion library
 
 許多測試框架如Jasmine和Jest都帶有內置的斷言。
  但是摩卡沒有提供斷言庫，所以我們必須選擇我們自己的。
@@ -86,7 +86,7 @@ node.js 可以繼續使用CommonJS。
  如果您已經了解jQuery，與編寫傳統的DOM查詢相比，這可以節省一些輸入。
 
 
-- 72 Where to run test ?
+### 72 Where to run test ?
 
  有三種流行的方法來運行基於JavaScript的測試。
 
@@ -102,8 +102,8 @@ node.js 可以繼續使用CommonJS。
  但是你看不到PhantomJS，因為它沒有可見的界面。
  這很有用，因為經常編寫自動化測試你不需要看到實際的界面。 您只需要快速的模擬真實瀏覽器。
 
-     第三種選擇是利用內存中的DOM。
- 正如我們剛剛討論的，JSDOM是一個庫，它通過在我們可以與之交互的內存中創建一個DOM來模擬實際的瀏覽器。 您可以將JSDOM視為PhantomJS的輕量級替代品，因為JSDOM在後台沒有完整的瀏覽器。 它只專注於模擬內存中的DOM。
+     第三種選擇是利用記憶體中的DOM。
+ 正如我們剛剛討論的，JSDOM是一個庫，它通過在我們可以與之交互的記憶體中創建一個DOM來模擬實際的瀏覽器。 您可以將JSDOM視為PhantomJS的輕量級替代品，因為JSDOM在後台沒有完整的瀏覽器。 它只專注於模擬記憶體中的DOM。
 
  這種方法的優點是設置速度快，速度快。
  也就是說，PhantomJS和JSDOM都是很好的選擇。
@@ -140,7 +140,7 @@ they're often run on demend or in QA.
 
 ---
 
-- what does continuous integration do ?
+### what does continuous integration do ?
 
 那麼CI服務器如何提供所有這些好處？首先它會在您commit的時刻自動構建您的應用程序。
  這可以確保您的應用程序構建在另一台機器上。
@@ -153,7 +153,7 @@ they're often run on demend or in QA.
  最後，雖然不是必需的，但您甚至可以考慮使用CI服務器自動部署。
  在這種情況下，如果上述所有檢查都通過，則您的應用程序會自動部署到生產環境中。
 
-Travis 和 Jenkins 是最流行的，因此擁有最大的支持生態系統
+**Travis 和 Jenkins 是最流行的，因此擁有最大的支持生態系統**
 Travis 有一個託管解決方案，而 Jenkins 是一個不錯的選擇，如果你更喜歡自己託管你的CI服務器。 
 Appveyor因其Windows支持而值得注意。
 我們將設置兩個持續集成服務器，Travis CI和Appveyor。
@@ -163,7 +163,7 @@ Appveyor因其Windows支持而值得注意。
 
 ---
 
- - HTTP call approaches
+ ### HTTP call approaches
 
 如果你只在Node上工作，使用 Request 
 如果您在瀏覽器中，那麼使用 polyfill 進行抓取是最有前途的方法.但是，這也假定您可以忍受Fetch的限制。
@@ -176,7 +176,7 @@ SuperAgent
 Axios
 都是不錯的選擇。取決於您是否優先考慮文件大小或功能，SuperAgent和Axios 提供更多功能。
 
-- Why Mock HTTP ?
+### Why Mock HTTP ?
 
 你想單元測試你的代碼，以便你的測試能夠快速可靠地運行
 或者你的開發或QA環境中現有的Web服務調用起來很慢或者很昂貴。
@@ -188,11 +188,11 @@ Axios
  如果您還沒有決定如何設計您的Web服務，模擬可以讓您快速為不同的潛在 response 創建原型，並了解它們如何與您的應用程序配合使用。
  也許一個單獨的團隊正在為您的應用程序創建服務，通過 mock 服務調用，您可以立即開始編碼並在準備就緒時切換到實際的Web服務，您只需要就API提議的設計達成一致並相應地進行模擬最後
 
-- How to Mock HTTP ?
+### How to Mock HTTP ?
 
 
-      使用 JSON serer 
- JSON serer 使用靜態JSON創建假數據庫，然後當您啟動 JSON serer 時，它會創建一個Web服務，在後台使用靜態JSON，因此當您刪除，添加或編輯記錄時它實際上更新了文件。
+      使用 JSON Server 
+ JSON server 使用靜態JSON創建假數據庫，然後當您啟動 JSON server 時，它會創建一個Web服務，在後台使用靜態JSON，因此當您刪除，添加或編輯記錄時它實際上更新了文件。
  因此，這提供了一個真實工作API的完整模擬，但是針對本地模擬數據，它們只是坐在一個靜態文件中，這非常有用，因為該應用程序感覺完全響應，並且不必通過站立本地數據庫和Web服務器。
 
 **如果你想使用動態數據而不是相同的硬編碼數據呢？**
@@ -221,7 +221,7 @@ JSON Server: 實際上保存了您對數據所做的更改，因此它增加了�
  總之，如果已經有可用的服務層，那麼我建議使用它。
  但是如果一個單獨的團隊正在構建一個服務層，並且還沒有構建它，我建議嘗試一個模擬API，以便您可以快速移動而不依賴真實的API後端。
 
-- our plan for mocking HTTP
+### our plan for mocking HTTP
 
 1. 首先我們將使用JSON Schema Faker為我們的模擬API聲明模式，這將允許我們聲明我們的假API應該看起來像什麼，我們將聲明它將公開的對象和屬性，包括數據類型。
 1. 第二步涉及生成隨機數據，JSON Schema Faker支持使用幾個開源庫生成隨機數據。
@@ -233,5 +233,90 @@ JSON Server: 實際上保存了您對數據所做的更改，因此它增加了�
  JSON Server的美妙之處在於它實際上支持創建，讀取，更新和刪除操作。
  這意味著要開始開發，我們只需要就我們想要的調用和這些調用應該返回的數據形狀達成一致。
  然後，UI團隊可以繼續前進，而無需等待服務團隊實際創建這些關聯的服務，每個人都可以編寫代碼到一個界面並在以後重新組合。
+
+---
+### Project Structure tips
+
+    JS belongs in a .js File.
+
+在進行Web開發時，一些人試圖簡單地在 html `script` tag 內聯JavaScript 檔案。
+ 但讓我們暫停一下，並考慮為什麼應該避免。
+ 有很多缺點。
+
+**我失去了利用我們剛剛建立的所有優點的能力。**
+
+ 看，如果我這樣做，我該如何編寫自動化測試？我如何鏈接此代碼？我如何重用這個？ 如果我想使用ES6，TypeScript 或一些可以翻譯JavaScript的替代語言呢？如果我想通過使用ES6的 import 來明確我的代碼的依賴關係，該怎麼辦？你不能。
+
+**通過將 script 與 html內聯，您將失去所有這些權力。**
+**應該避免在html文件內聯編寫JavaScript。**
+
+      請不要使用一些服務器端語言來生成JavaScript。
+
+ 來自Stack Overflow的這個例子讓我想為維護程序員哭泣哀悼。
+ 我們來考慮一下這裡的開發者體驗。
+ 所有的代碼都是相同的顏色。
+ 沒辦法自動選字。 您的編輯器無法突出顯示任何拼寫錯誤，因此直到運行時才會發現錯誤。 你不能享受我們在這個課程中努力工作的優點。
+
+ 然而，經常看到這種模式，因為剛接觸JavaScript的服務器端開發人員需要根據數據庫中的數據執行一些自定義邏輯。
+
+ 如果您需要代碼針對不同的用戶做出不同的響應，請將JSON從 servr 注入到您的應用程序中。
+
+      inject JSON from the server into your applicaiton
+
+      稱之為 Configuration Object Pattern.
+
+避免動態生成JavaScript代碼。
+而是動態生成JavaScript代碼可以使用的一些數據。
+我們不生成自定義的C＃，Java，Ruby或Python等，只是為了給每個用戶動態提供自定義行為。
+相反的，我們從數據庫中提取數據，並使用該數據來確定應該運行的邏輯。
+
+    Consider organizing files by feature
+
+在更大，更複雜的項目中，考慮按功能而不是文件類型進行組織。
+ 有兩種流行的方式來組織您的代碼：按文件類型或按功能。
+ 當按文件類型組織時，所有用於相同目的的文件都放在一起。
+ 在使用MVC框架時，這是一種流行的方法，通常期望您使用 model，view 和 controller 文件夾來組織您的應用程序。
+ 然而，這種方法的缺點是，你最終不得不繞過文件系統來打開和處理相關文件。
+
+      Extract logic into "POJOs"
+
+努力將盡可能多的邏輯提取到普通的舊JavaScript中。
+ 有些人會稱之為POJO。意思是簡單的舊JavaScript對象。
+
+**Plain Old JavaScript Objects**
+
+ Java和C＃開發人員會認識到這個術語，因為Java開發人員還使用術語POJO來描述內部具有純邏輯並且沒有框架特定問題的Java類。
+
+ 關鍵是，這些文件應該包含純粹的邏輯，而不是綁定到任何框架。
+ 在構建應用程序時，盡量在普通JavaScript中放置盡可能多的邏輯。
+
+**例如，如果你在React中工作，你的大部分邏輯應該存在於React component 之外。**
+ 這使得您的邏輯易於測試，易於重用，並有助於最大限度地減少與所選框架的聯繫。
+ 這最大限度地減少了切換到不同框架的影響
+
+ 要查看此哲學的示例，[請查看GitHub上的React Slingshot入門工具包中的演示應用程序。](https://github.com/coryhouse/react-slingshot/tree/master/src/utils)
+ 您會看到，日期格式和核心計算等關鍵邏輯在名為utils的文件夾中以普通JavaScript進行處理。
+ 雖然這個項目使用React，但這些都是純粹的JavaScript函數，並不以任何方式與React綁定。
+
+
+####總結一下。
+ 在您的開始套件中包含一個工作示例應用程序 (example app) 非常有幫助。
+ 這為每個人提供了目錄結構，文件命名，框架使用，測試，API調用，部署等方面的推薦方法。
+ 它提供了一個互動的例子，說明在團隊中工作的感覺。
+ 然後我們轉到幾個基本規則來構建您的項目。
+ 把你的JavaScript放在一個JavaScript文件中。
+ 這個原則是基礎性的。
+ 如果您將JavaScript與HTML內聯放置，您將失去我們在整個課程中努力設置的所有好處。
+ 考慮按功能組織您的演示應用程序，而不是技術或文件類型，特別是如果您的團隊通常構建大型且複雜的JavaScript應用程序。
+ 第三，將您的邏輯提取為普通的舊JavaScript對象。
+ 避免在框架特定的文件中嵌入太多的邏輯。
+ 將您的邏輯提取到易於測試的純函數。
+使用您喜歡的 JavaScript框架和庫來構建您的演示應用程序。
+ 並且一定要選擇一個與您的業務相關的域名。
+
+---
+---
+
+
 
 
