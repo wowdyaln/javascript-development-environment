@@ -6,7 +6,7 @@ getUsers().then(result => {
 
   result.forEach(user => {
     usersBody += `<tr>
-      <td><a herf="#" data-id="${user.id}" class="deleteUser">Delete</a></td>
+      <td><a href="#" data-id="${user.id}" class="deleteUser">Delete</a></td>
       <td>${user.id}</td>
       <td>${user.firstName}</td>
       <td>${user.lastName}</td>
