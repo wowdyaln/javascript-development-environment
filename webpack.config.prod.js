@@ -1,5 +1,6 @@
 import webpack from 'webpack';
 import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 export default {
   devtool: 'source-map', //https://webpack.js.org/configuration/devtool/#devtool
@@ -19,8 +20,25 @@ export default {
       noInfo: false,
     }),
 
+    // create HTML file includes reference to bundled JS.
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttriutes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
+      inject: true
+    }),
     // Minify JS; not avalible in webpack 4.
-    // new webpack.optimize.UglifyJsPlugin()
+    // new webpack.optimize.UglifyJsPlugin(),
+
   ],
   module: {
     rules: [
