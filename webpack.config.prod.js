@@ -1,6 +1,7 @@
 import webpack from 'webpack';
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import WebpackMD5Hash from 'webpack-md5-hash'
 
 export default {
   devtool: 'source-map', //https://webpack.js.org/configuration/devtool/#devtool
@@ -12,7 +13,7 @@ export default {
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    filename: '[name].js'
+    filename: '[name].[chunkhash].js'
   },
 
   mode: 'development',
@@ -26,6 +27,9 @@ export default {
   },
 
   plugins: [
+    // Hash the files using MD5 so that their names change when the content changes.
+    new WebpackMD5Hash(),
+
     new webpack.LoaderOptionsPlugin({
       debug: true,
       noInfo: false,
