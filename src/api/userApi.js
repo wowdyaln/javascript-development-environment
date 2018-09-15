@@ -1,33 +1,33 @@
-import 'whatwg-fetch'
-import getBaseUrl from './baseUrl'
+import 'whatwg-fetch';
+import getBaseUrl from './baseUrl';
 
-const baseUrl = getBaseUrl()
+const baseUrl = getBaseUrl();
 
-export function getUsers(){
-  return get('users')
+export function getUsers() {
+  return get('users');
 }
 
-export function deleteUser(id){
-  return del(`users/${id}`)
+export function deleteUser(id) {
+  return del(`users/${id}`);
 }
 
-function get(url){
-  return fetch(baseUrl + url).then(onSuccess, onError)
+function get(url) {
+  return fetch(baseUrl + url).then(onSuccess, onError);
 }
 
-// can't call function del since reseved word.
+// Can't call func delete since reserved word.
 function del(url) {
   const request = new Request(baseUrl + url, {
-    method: "DELETE"
-  })
-  return fetch(request).then(onSuccess, onError)
+    method: 'DELETE'
+  });
+
+  return fetch(request).then(onSuccess, onError);
 }
 
-function onSuccess(res){
-  return res.json()
+function onSuccess(response) {
+  return response.json();
 }
 
-function onError(err){
-  console.log(err)  // eslint-disable-line no-console
+function onError(error) {
+  console.log(error); // eslint-disable-line no-console
 }
-

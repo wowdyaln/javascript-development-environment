@@ -1,10 +1,10 @@
-import webpack from 'webpack';
 import path from 'path';
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 export default {
-  devtool: 'inline-source-map', //https://webpack.js.org/configuration/devtool/#devtool
+  debug: true,
+  devtool: 'inline-source-map',
+  noInfo: false,
   entry: [
     path.resolve(__dirname, 'src/index')
   ],
@@ -14,23 +14,17 @@ export default {
     publicPath: '/',
     filename: 'bundle.js'
   },
-  mode: 'development',
   plugins: [
-    // create HTML file includes reference to bundled JS.
+    // Create HTML file that includes reference to bundled JS.
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       inject: true
-    }),
-    
-    new webpack.LoaderOptionsPlugin({
-      debug: true,
-      noInfo: false,
     })
   ],
   module: {
-    rules: [
-      { test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader'] },
-      { test: /\.css$/, loaders: ['style-loader', 'css-loader'] }
+    loaders: [
+      {test: /\.js$/, exclude: /node_modules/, loaders: ['babel']},
+      {test: /\.css$/, loaders: ['style','css']}
     ]
   }
 }
